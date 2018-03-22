@@ -50,9 +50,14 @@
                 console.log(obj['client_name']+"登录成功");
                 break;
 				case 'say':
-				document.getElementById("contents").innerHTML +=obj.content+"<br/>"; 
-				document.getElementById('msg').value="";
+				var client_name=obj.from_client_name;
+				var to_client_id=obj.to_client_id;
+				if(client_name==to_client_id){
+					document.getElementById("contents").innerHTML +=obj.content+"<br/>"; 
+					document.getElementById('msg').value="";
+				}else{
 				console.log(obj.contents);
+				}
 				break;	
 				}
 				/*var obj=JSON.parse(e.data);
