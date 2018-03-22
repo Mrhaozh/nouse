@@ -1,0 +1,93 @@
+    <!DOCTYPE html>  
+    <html lang="en">  
+    <head>  
+        <meta charset="UTF-8">  
+        <title>masterDemo</title>  
+		<script type="text/javascript" src="jquery.min.js"></script>
+    </head>  
+    <body>  
+    <h1>I'm master</h1>  
+	<div id="onlinecount"></div>
+	<div style="width:400px;height:30px;line-height:30px;" id="userlist">
+	</div>
+	<div style="width:400px;height:300px;border:2px solid #666666;">
+	<div id="contents" style="width:360px;height:230px;padding:20px;">
+	</div>
+    <input type="text" style="width:300px;margin:0 10px;" id="msg">   
+    <button type="button" id="send">send</button>  
+	</div>
+    <input id="sendid" type="hidden" value=""/>
+    </body>  
+	<script type="text/javascript">  
+				
+            var ws = new WebSocket("ws://127.0.0.1:7272");  
+			document.getElementById("send").onclick=function(){
+			var content=document.getElementById("msg").value;
+			var to_client_id=document.getElementById("sendid").value;
+				if(content!=''){
+				ws.send(JSON.stringify({"type":"say","to_client_id":to_client_id,"content":content,}));
+				}else{
+				}
+			}
+			ws.onopen = function () {
+				ws.send(JSON.stringify({"type":"masterlogin","client_name":'master1',"room_id":1,}));
+				console.log("websocket握手成功，发送登录数据:"+JSON.stringify({"type":"masterlogin","client_name":'master1',"room_id":1,}));
+				
+            };
+            ws.onmessage = function (e) {  
+				console.log(e.data);
+				var obj=JSON.parse(e.data);
+				switch(obj.type){
+					case 'ping':
+					 ws.send('{"type":"pong"}');
+					break;
+					case 'masterlogin':
+					  if(obj.client_list)
+                {
+                    client_list = obj.client_list;
+                }
+                flush_client_list();
+                console.log(obj['client_name']+"登录成功");
+                break;
+				case 'say':
+				document.getElementById("contents").innerHTML +=obj.content+"<br/>"; 
+				document.getElementById('msg').value="";
+				console.log(obj.contents);
+				break;	
+				}
+				/*var obj=JSON.parse(e.data);
+				console.log(JSON.parse(obj.users));
+				var users=JSON.parse(obj.users);
+				document.getElementById("content").innerHTML='';
+				for(var i=0;i<users.length;i++){
+					
+					document.getElementById("content").innerHTML +="<div style='line-height:50px;display:flex;flex-direction:row;align-items:center;margin-top:20px;'>"+"<img src='head.jpg' style='height:50px;border:2px solid #666666;border-radius:100%;'>"+"<div style='margin-left:15px;'>"+users[i]+"</div></div>";  
+				}
+				if(obj.sign==1){
+				document.getElementById('onlinecount').innerHTML="当前在线"+obj.num;
+				}else{
+				document.getElementById("content").innerHTML += obj.user+":"+"&nbsp"+obj.contents+"<br/>";  
+				}
+				*/
+			};      
+          // 刷新用户列表框
+    function flush_client_list(){
+    	var userlist_window = $("#userlist");
+    	//var client_list_slelect = $("#client_list");
+    	userlist_window.empty();
+    	//client_list_slelect.empty();
+    	userlist_window.append('<span>在线用户</span>');
+    	//client_list_slelect.append('<option value="all" id="cli_all">所有人</option>');
+    	for(var p in client_list){
+            userlist_window.append('<span onclick="'+setclickid(client_list[p])+'" id="'+p+'">'+client_list[p]+'</span>');
+        //    client_list_slelect.append('<option value="'+p+'">'+client_list[p]+'</option>');
+        }
+    	//$("#client_list").val(select_client_id);
+    	//userlist_window.append('</ul>');
+    }
+	function setclickid(sendid){
+		document.getElementById("sendid").value=sendid;
+	}
+    </script>  
+      
+    </html>  
