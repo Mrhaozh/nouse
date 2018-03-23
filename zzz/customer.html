@@ -26,16 +26,16 @@
 			var content=document.getElementById("msg").value;
 			var to_client_id=document.getElementById("sendid").value;
 			var to_client_name=document.getElementById("sendname").value;
-				if(content!=''&& to_client_name!='master1'){
+				if(content!=''){
+				
+				document.getElementById("contents").innerHTML +="<div style='text-align:right;width:100%;margin-right:30px;'>"+"customer1" +":" +content+"</div><br/>"; 
 				ws.send(JSON.stringify({"type":"say","to_client_id":to_client_id,"content":content,"to_client_name":to_client_name}));
-				}else{
-				document.getElementById("contents").innerHTML +="<div style='text-align:left;width:100%;margin-left:30px;'>"+to_client_name +":" +content+"</div><br/>"; 
 				document.getElementById('msg').value="";
 				}
 			}
 			ws.onopen = function () {
 				ws.send(JSON.stringify({"type":"masterlogin","client_name":'customer1',"room_id":1,}));
-				console.log("websocket握手成功，发送登录数据:"+JSON.stringify({"type":"customerlogin","client_name":'customer1',"room_id":1,}));
+				console.log("websocket握手成功，发送登录数据:"+JSON.stringify({"type":"masterlogin","client_name":'customer1',"room_id":1,}));
 				
             };
             ws.onmessage = function (e) {  
@@ -55,17 +55,19 @@
                 break;
 				case 'say':
 				var client_name=obj.from_client_name;
-				var from_client_id=obj.from_client_id;
-				var to_client_id=obj.to_client_id;
-				if(from_client_id==to_client_id){
-					document.getElementById("contents").innerHTML +="<div style='text-align:left;width:100%;margin-left:60px;'>"+client_name +":" +obj.content+"</div><br/>"; 
+				if(client_name!='customer1'){
+					document.getElementById("contents").innerHTML +="<div style='text-align:left;width:100%;margin-left:30px;'>"+client_name +":" +obj.content+"</div><br/>"; 
 					document.getElementById('msg').value="";
 				}else{
-				document.getElementById("contents").innerHTML +="<div style='text-align:right;width:100%;margin-right:60px;'>" +client_name+":" + obj.content + "</div><br/>"; 
-				document.getElementById('msg').value="";
 				console.log(obj.content);
 				}
 				break;	
+				   case 'logout':
+                //{"type":"logout","client_id":xxx,"time":"xxx"}
+                say(data['from_client_id'], data['from_client_name'], data['from_client_name']+' 退出了', data['time']);
+                delete client_list[data['from_client_id']];
+                flush_client_list();
+				break;
 				}
 				/*var obj=JSON.parse(e.data);
 				console.log(JSON.parse(obj.users));

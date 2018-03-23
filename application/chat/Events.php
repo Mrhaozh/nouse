@@ -79,8 +79,9 @@ class Events
                
                 // 给当前用户发送用户列表 
                 $new_message['client_list'] = $clients_list;
-                Gateway::sendToCurrentClient(json_encode($new_message));
-                return;
+               // Gateway::sendToCurrentClient(json_encode($new_message));
+                Gateway::sendToGroup($room_id, json_encode($new_message));
+				return;
                 
             // 客户端发言 message: {type:say, to_client_id:xx, content:xx}
             case 'say':
