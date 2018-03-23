@@ -11,12 +11,13 @@
 	<div style="width:400px;height:30px;line-height:30px;" id="userlist">
 	</div>
 	<div style="width:400px;height:300px;border:2px solid #666666;">
-	<div id="contents" style="width:360px;height:230px;padding:20px;">
+	<div id="contents" style="width:360px;height:230px;padding:20px;display:flex;flex-direction:column;align-items:center;">
+	
 	</div>
     <input type="text" style="width:300px;margin:0 10px;" id="msg">   
     <button type="button" id="send">send</button>  
 	</div>
-    <input id="sendid" type="hidden" value=""/>
+    <input id="sendid" type="hidden" value=""/> <input id="sendname" type="hidden" value=""/>
     </body>  
 	<script type="text/javascript">  
 				
@@ -24,9 +25,12 @@
 			document.getElementById("send").onclick=function(){
 			var content=document.getElementById("msg").value;
 			var to_client_id=document.getElementById("sendid").value;
-				if(content!=''){
-				ws.send(JSON.stringify({"type":"say","to_client_id":to_client_id,"content":content,}));
+			var to_client_name=document.getElementById("sendname").value;
+				if(content!=''&& to_client_name!='master1'){
+				ws.send(JSON.stringify({"type":"say","to_client_id":to_client_id,"content":content,"to_client_name":to_client_name}));
 				}else{
+				document.getElementById("contents").innerHTML +="<div style='text-align:left;width:100%;margin-left:30px;'>"+to_client_name +":" +content+"</div><br/>"; 
+				document.getElementById('msg').value="";
 				}
 			}
 			ws.onopen = function () {
@@ -51,12 +55,15 @@
                 break;
 				case 'say':
 				var client_name=obj.from_client_name;
+				var from_client_id=obj.from_client_id;
 				var to_client_id=obj.to_client_id;
-				if(client_name==to_client_id){
-					document.getElementById("contents").innerHTML +=obj.content+"<br/>"; 
+				if(from_client_id==to_client_id){
+					document.getElementById("contents").innerHTML +="<div style='text-align:left;width:100%;margin-left:60px;'>"+client_name +":" +obj.content+"</div><br/>"; 
 					document.getElementById('msg').value="";
 				}else{
-				console.log(obj.contents);
+				document.getElementById("contents").innerHTML +="<div style='text-align:right;width:100%;margin-right:60px;'>" +client_name+":" + obj.content + "</div><br/>"; 
+				document.getElementById('msg').value="";
+				console.log(obj.content);
 				}
 				break;	
 				}
@@ -84,14 +91,15 @@
     	userlist_window.append('<span>在线用户</span>');
     	//client_list_slelect.append('<option value="all" id="cli_all">所有人</option>');
     	for(var p in client_list){
-            userlist_window.append('<span onclick="'+setclickid(client_list[p])+'" id="'+p+'">'+client_list[p]+'</span>');
+            userlist_window.append('<span onclick="'+setclickid(p,client_list[p])+'" id="'+p+'">'+client_list[p]+'</span>');
         //    client_list_slelect.append('<option value="'+p+'">'+client_list[p]+'</option>');
         }
     	//$("#client_list").val(select_client_id);
     	//userlist_window.append('</ul>');
     }
-	function setclickid(sendid){
+	function setclickid(sendid,sendname){
 		document.getElementById("sendid").value=sendid;
+		document.getElementById("sendname").value=sendname;
 	}
     </script>  
       

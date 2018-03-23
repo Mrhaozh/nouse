@@ -100,11 +100,11 @@ class Events
                         'from_client_id'=>$client_id, 
                         'from_client_name' =>$client_name,
                         'to_client_id'=>$message_data['to_client_id'],
-                        'content'=>"<b>对你说: </b>".nl2br(htmlspecialchars($message_data['content'])),
+                        'content'=>nl2br(htmlspecialchars($message_data['content'])),
                         'time'=>date('Y-m-d H:i:s'),
                     );
                     Gateway::sendToClient($message_data['to_client_id'], json_encode($new_message));
-                    $new_message['content'] = "<b>你对".htmlspecialchars($message_data['to_client_name'])."说: </b>".nl2br(htmlspecialchars($message_data['content']));
+                    $new_message['content'] = nl2br(htmlspecialchars($message_data['content']));
                     return Gateway::sendToCurrentClient(json_encode($new_message));
                 }
                 
