@@ -1,0 +1,16 @@
+<!--pages/xiaoguo/xiaoguo.wxml-->
+<view class="container">
+
+  <view>
+    <navigator class='nav' url="../shouxieban/shouxieban" open-type="navigate" hover-class="other-navigator-hover">手写板/写字板/签字版（canvas）</navigator>
+  </view>
+
+  <view>
+    <navigator class='nav' url="../clockeffect/clockeffect" open-type="navigate" hover-class="other-navigator-hover">时钟特效（指针正常）</navigator>
+  </view>
+
+  <view>
+    <navigator class='nav' url="../clockeffect2/clockeffect2" open-type="navigate" hover-class="other-navigator-hover">时钟特效（指针平滑）</navigator>
+  </view>
+
+</view>

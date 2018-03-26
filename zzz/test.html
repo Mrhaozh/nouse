@@ -40,7 +40,6 @@
 			ws.onopen = function () {
 				ws.send(JSON.stringify({"type":"masterlogin","client_name":'master1',"room_id":1,}));
 				console.log("websocket握手成功，发送登录数据:"+JSON.stringify({"type":"masterlogin","client_name":'master1',"room_id":1,}));
-				
             };
             ws.onmessage = function (e) {  
 				console.log(e.data);
