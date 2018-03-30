@@ -26,4 +26,7 @@ return [
     // 应用结束
     'app_end'      => [],
 	'app_debut' => true,
+	'CheckAuth' => [
+        'app\\index\\hook\\Test',
+    ],
 ];
