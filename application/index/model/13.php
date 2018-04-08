@@ -1,5 +1,5 @@
 <?php
-namespace app\index\model;
+namespace think\model;
 use think\Model;
 class User extends Model{
 	
