@@ -60,4 +60,30 @@
         $captcha = new Captcha($config);
         return $captcha->entry();    
     }
+	public function paixu(){
+		$a=[3,5,1,13,9];
+		
+		for($i=1;$i<5;$i++){
+			for($j=0;$j<(5-$i);$j++){
+				if($a[$j]<$a[$j+1]){
+					$b=$a[$j];
+					$a[$j]=$a[$j+1];
+					$a[$j+1]=$b;
+				}
+			}
+		}
+		
+		/*
+		for($i=0;$i<count($a);$i++){
+			for($j=1;$j<(count($a)-$i);$j++){
+				if($a[$j]>$a[$j-1]){
+					$b=$a[$j];
+					$a[$j]=$a[$j-1];
+					$a[$j-1]=$b;
+				}
+			}
+		}
+		*/
+		var_dump($a);
+	}
     }

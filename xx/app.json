@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/newsxq/newsxq",
+    "pages/goodsxq/goodsxq",
+    "pages/about/about",
+    "pages/news/news",
+    "pages/test/test",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#7ca374",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#FFF",
+    "backgroundColor": "#7ca374",
+    "selectedColor": "#F4BB57",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "pages/images/tab_home.png",
+        "selectedIconPath": "pages/images/tab_home_select.png",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "iconPath": "pages/images/tab_news.png",
+        "selectedIconPath": "pages/images/tab_news_select.png",
+        "text": "企业快讯"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "iconPath": "pages/images/tab_about.png",
+        "selectedIconPath": "pages/images/tab_about_select.png",
+        "text": "公司详情"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+<!--pages/newsxq/newsxq.wxml-->
+<view>
+  <image class="swiperimg" src='../images/swiper_1.jpg' mode='widthFix' bindtap="previewImage"></image>
+</view>
+
+ <view style="height:20rpx; background:#efeff5;"></view>
+
+<view class="title">
+    <view>积家(Jaeger)手表</view>
+</view>
+<view class="price">
+    <view>购买请点击下方客服按钮进行咨询快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情快讯详情</view>
+ </view>
+
+

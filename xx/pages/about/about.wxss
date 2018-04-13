@@ -1,0 +1,59 @@
+/* pages/about/about.wxss */
+page{
+  background: #FFF;
+}
+.main_title{
+  font-size: 35rpx;
+  padding:20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.sub_title{
+font-size:32rpx;
+color: #CFCFD4;
+padding:0 20rpx 20rpx 20rpx;
+border-bottom:4rpx dashed #e5e5e5;
+overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.position{
+  margin-top:15rpx;
+  margin-left:20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.left{}
+.left >image{
+  padding-top:15rpx;
+  width:30rpx;
+  height:40rpx;
+}
+.right{
+  margin-left:20rpx;
+  font-size:35rpx;
+}
+.text{
+  font-size: 26rpx;
+  margin:0 20rpx;
+  text-align: justify;
+}
+.bottom{
+  margin:10rpx 15rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  flex-wrap: wrap;
+}
+.item{
+  margin:5rpx 10rpx;
+}
+.item >image{
+  width:220rpx;
+  height:200rpx;
+}

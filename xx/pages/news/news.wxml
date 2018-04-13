@@ -1,0 +1,50 @@
+<!--pages/news/news.wxml-->
+<!--顶部选项卡-->
+<view class='topbar'>
+    <view  class='{{current==0?"selected":"topselectbar"}}'>
+      <view class='text' data-current='0' bindtap='onoff'>推荐</view>
+    </view>
+    <view class='{{current==1?"selected":"topselectbar"}}'>
+      <view class='text' data-current='1' bindtap='onoff'>全部</view>
+    </view>
+</view>
+<!--选项卡结束-->
+
+<!--快讯列表-->
+<swiper class='pages' current='{{current}}' bindchange='eventchange'>
+  <!--推荐-->
+    <swiper-item>
+      <scroll-view  class='scroll'  scroll-y bindscrolltoupper="onerefresh" bindscrolltolower="oneloadmore">
+          <view class='lists' wx:for="{{lists}}" bindtap='goodsxq' data-id='{{item.id}}'>
+              <view class="listitem">
+                <view class="left">
+                  <image src='{{item.img}}'></image>
+                </view>
+              <view class="right">
+                <view class='righttop'>{{item.title}}阿卡丽商店JFK阿斯顿发生打发士大夫撒旦发射点发阿斯蒂芬撒打发士大夫撒旦撒射点发</view>
+                <view class='rightbottom'> 手表之家 -{{item.time}}</view>
+              </view>
+             </view>
+          </view>
+      </scroll-view>
+    </swiper-item>
+  <!--推荐结束-->
+  <!--全部-->  
+    <swiper-item>
+      <scroll-view  class='scroll'  scroll-y bindscrolltoupper="tworefresh" bindscrolltolower="twoloadmore">
+          <view class='lists' wx:for="{{lists}}" bindtap='goodsxq' data-id='{{item.id}}'>
+              <view class="listitem">
+                <view class="left">
+                  <image src='{{item.img}}'></image>
+                </view>
+                <view class="right">
+                    <view class='righttop'>{{item.title}}</view>
+                    <view class='rightbottom'> 手表之家 -6分钟前</view>
+                </view>
+              </view>
+          </view>
+      </scroll-view>
+    </swiper-item>
+  <!--全部结束-->  
+</swiper>
+<!--快讯列表结束-->

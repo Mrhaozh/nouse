@@ -1,0 +1,43 @@
+<!--pages/goodsxq/goodsxq.wxml-->
+<!--轮播图-->
+<swiper class='swiper' indicator-dots="true" autoplay='true' interval='3000' duration='500'>
+    <swiper-item wx:for="{{goodsimage}}">
+        <image class="swiperimg" src='{{item.img}}' mode='scaleToFill' bindtap="previewImage"></image>
+    </swiper-item>
+</swiper>
+<!--轮播图结束-->
+
+<view class="title">
+    <view>积家(Jaeger)手表</view>
+    <view>Master Control大师系列机械男表1552520</view>
+</view>
+<view class="price">
+    <view>价格 <span style="color:#E23274">￥10000</span></view>
+    <view>购买请点击下方客服按钮进行咨询</view>
+</view>
+<!--商品信息-->
+  <scroll-view class="desc"  scroll-y>
+      <view class="desctitle">商品信息</view>
+      <view class="xq">
+          <view>商品型号 1552520 显示类别指针 机芯类别机械(自动) 表盘颜色银色 表带颜色其他 表带材质鳄鱼皮 表镜材质蓝宝石水晶玻璃 表扣类型针扣</view>
+          <view>使用人群：全部</view>
+          <view>尺码：</view>
+          <view>设计师：</view>
+          <view>颜色：</view>
+          <view>颜色：</view>
+          <view>颜色：</view>
+      </view>
+  </scroll-view>
+<!--商品信息结束-->
+<!--底部客服栏-->  
+<view class="bottom">
+    <view class="kf">
+      <!--<image src='../images/icon_kf.png'></image>-->
+      <view class="kftext">
+        <button open-type='contact' session-from="weapp">
+            <image src='../images/icon_kf.png' style="width:38rpx;height:38rpx;padding-top:10rpx;"></image>
+            <view style='margin-top:-18rpx;font-size:20rpx;'>客服</view>
+        </button>
+      </view>
+    </view>
+</view>

@@ -1,0 +1,21 @@
+/* pages/newsxq/newsxq.wxss */
+page{
+   background:#FFF;
+}
+.swiperimg{
+width:100%;
+}
+.title{
+  margin-top:10rpx;
+  padding-left:20rpx;
+  font-size: 35rpx;
+}
+.price{
+  color:#959595;
+  padding-top:10rpx;
+  padding-left:20rpx;
+  padding-right:20rpx;
+  padding-bottom:5rpx;
+  font-size: 30rpx;
+  text-align: justify;
+}

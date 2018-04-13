@@ -1,0 +1,41 @@
+<!--pages/about/about.wxml-->
+<!--标题-->
+<view class='main_title'>中国山西手表之家责任有限公司</view>
+
+<view class='sub_title'>购物·商贸</view>
+
+<view class='position'>
+  <view class='left'><image src='../images/icon_position.png'></image></view>
+  <view class='right'>山西省晋中市榆次区安宁桥头大地保险</view>
+</view>
+
+<view class='position'>
+    <view>
+        <image style="width:35rpx;height:35rpx;padding-top:15rpx;" src='../images/icon_time.png'></image>
+    </view>
+    <view class='right'>8:00-18:00</view>
+</view>
+
+<view class='position'>
+    <view class='left'>
+        <image src='../images/icon_tel.png'></image></view>
+  <view class='right'>0354-0000000
+    </view>
+</view>
+
+<view class='position'>
+  <view class='left'>
+      <image src='../images/icon_about.png'></image>
+  </view>
+  <view class='right'>公司详情</view>
+</view>
+
+<view class="text">
+    <p>Metsys Group(美信集团)专注于水下声学和海洋科技领域，多年来一直跟踪国际最新技术，与国际上众多知名公司形成紧密合作，为用户提供系统设计、咨询和集成方案，同时带给用户先进和实用的产品。Metsys Group位于新加坡，在香港、北京均有分公司或代表处。公司业务遍布美国、英国、丹麦、加拿大、新加坡等国家。主要合作伙伴包括 Tyledyne Reson, Kemo Ltd., Eastar Offshore, CodaOctopus Products Ltd., Marine Electronics Ltd 等. Metsys依靠自身强大的专业实力、丰富的实践经验，在水下声学、海洋工程产品和工业ROV领域形成了极具实力和特色的咨询、科研、贸易和服务体系，多年来受到用户的广泛认可和好评。       </p>
+</view>
+
+<view class='bottom'>
+  <view class='item' wx:for="{{imagelist}}">
+      <image src='{{item.img}}' bindtap='previewImage'></image>
+  </view>
+</view>
